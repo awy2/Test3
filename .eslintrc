@@ -11,8 +11,12 @@
     "browser": true,
     "node": true,
     "mocha": true,
-    "es6": true
+    "es6": true,
+    "production": {
+      "plugins": ["transform-es2015-modules-commonjs"]
+    }
   },
+
   "rules": {
     "space-before-function-paren": "off",
     "react/prefer-stateless-function": "warn",
@@ -20,6 +24,23 @@
     "linebreak-style": "off",
     "global-require": "off",
     "semi": "warn",
-    "arrow-body-style": "off"
+    "arrow-body-style": "off",
+    "no-unused-vars": "warn", 
+    "eol-last": "warn",
+    "indent": "warn", 
+    "object-curly-spacing": "warn",
+    "comma-dangle":"warn",
+    "space-before-blocks":"warn",
+    "array-bracket-spacing":"warn",
+    "react/jsx-indent":"warn",
+    "prefer-const":"warn",
+    "quotes":"warn",
+    "space-in-parens":"warn",
+    "padded-blocks":"warn",
+    "no-multi-spaces":"warn",
+    "no-multiple-empty-lines":"warn",
+    "spaced-comment": "warn",
+    "react/jsx-closing-tag-location":"warn",
+    "no-trailing-spaces":"warn"
   }
 }

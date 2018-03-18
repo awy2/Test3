@@ -33,6 +33,7 @@ const config = {
   
   resolve: {
     extensions: ['.js', '.jsx'],
+
   },
 
   module: {
@@ -50,8 +51,10 @@ const config = {
         ],
         exclude: /node_modules/,
       },
+
+     
       {
-        test: /\.scss$/,
+        test: /\.(scss|css)$/,
         exclude: /node_modules/,
         use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
           fallback: 'style-loader',
@@ -67,6 +70,8 @@ const config = {
           publicPath: '../'
         })),
       },
+
+
       {
         test: /\.(png|jpg|gif)$/,
         use: [
@@ -137,17 +142,16 @@ const config = {
     new webpack.LoaderOptionsPlugin({
       test: /\.jsx?$/,
       options: {
-        /*
         eslint: {
           configFile: resolve(__dirname, '.eslintrc'),
           cache: false,
-        }*/
+        }
       },
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new ExtractTextPlugin({ filename: './styles/style.css', disable: false, allChunks: true }),
     new CopyWebpackPlugin([{ from: 'vendors', to: 'vendors' }]),
-    new OpenBrowserPlugin({ url: 'http://localhost:8080' }),
+  //  new OpenBrowserPlugin({ url: 'http://localhost:8080' }),
     new webpack.HotModuleReplacementPlugin(),
   ],
 };

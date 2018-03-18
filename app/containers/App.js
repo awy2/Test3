@@ -1,11 +1,15 @@
 import React from 'react';
 import img from '../assets/images/react_logo_512x512.png';
 
+import InputControls from './input/InputControls';
+
 const App = () => {
-  return (
-    <div>
-      <h2 id="heading">Hello ReactJS</h2>
-      <img
+
+  //   <InputControls />
+
+
+  /*
+       <img
         className="image"
         style={{ margin: '0.5em' }}
         height="40"
@@ -13,6 +17,13 @@ const App = () => {
         src={img}
         alt="React Logo"
       />
+*/
+  return (
+    <div>
+      <h2 id="heading">Hello ReactJS</h2>
+ 
+   
+
     </div>
   );
 };
