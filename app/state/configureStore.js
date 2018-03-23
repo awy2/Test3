@@ -1,16 +1,16 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import createLogger from 'redux-logger';
-import reducers from './modules'
+import * as reducers from "./ducks";
+
 
 export default function configureStore( ) {
 
     const middleware = [ createLogger ];
 
-    const reducer = combineReducers({
-        reducers
-      });
+    const rootReducer = combineReducers( reducers );
 
-    let store = createStore( reducer,  applyMiddleware(...middleware) );
+
+    let store = createStore( rootReducer,  applyMiddleware(...middleware) );
 
 
   return store;

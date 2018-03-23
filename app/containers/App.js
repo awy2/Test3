@@ -2,11 +2,9 @@ import React from 'react';
 import img from '../assets/images/react_logo_512x512.png';
 
 import InputControls from './input/InputControls';
+import OutputControls from './output/OutputControls';
 
 const App = () => {
-
-  //   <InputControls />
-
 
   /*
        <img
@@ -19,11 +17,9 @@ const App = () => {
       />
 */
   return (
-    <div>
-      <h2 id="heading">Hello ReactJS</h2>
- 
-   
-
+    <div className="mainBody">
+        <InputControls />
+        <OutputControls />
     </div>
   );
 };

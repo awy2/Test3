@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 
-import {Tabs, Tab} from 'material-ui/Tabs';
+import { Tabs, Tab } from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
+
+import ContactTab from './ContactTab';
+import IntroTab from './IntroTab';
+// import ContactTab from './ContactTab';
+// import ContactTab from './ContactTab';
+// import ContactTab from './ContactTab';
 
 export default class InputControls extends Component {
 
@@ -18,7 +24,6 @@ export default class InputControls extends Component {
       });
     };
   
-
     render() {
       return (
         <div className="input-controls">
@@ -26,25 +31,33 @@ export default class InputControls extends Component {
             onChange={this.handleChange}
             value={this.state.slideIndex}
           >
-          <Tab label="Address" value={0} />
-          <Tab label="Description" value={1} />
-          <Tab label="Key Words" value={2} />
+          <Tab label="Contact" value={0} />
+          <Tab label="Intro" value={1} />
+          <Tab label="Body" value={2} />
+          <Tab label="End" value={3} />
+          <Tab label="Key Words" value={4} />
         </Tabs>
         <SwipeableViews
           index={this.state.slideIndex}
           onChangeIndex={this.handleChange}
         >
-          <div>
-            Swipe to see the next slide.<br />
+          <div className="input-tab">
+            <ContactTab />
           </div>
-          <div>
+          <div className="input-tab">
+            <IntroTab />
+          </div>
+          <div className="input-tab">
+            slide n°3
+          </div>
+          <div className="input-tab">
             slide n°2
           </div>
-          <div >
+          <div className="input-tab">
             slide n°3
           </div>
         </SwipeableViews>
-        </div>
-      )
-    }
+      </div>
+    )
   }
+}

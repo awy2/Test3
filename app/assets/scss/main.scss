@@ -5,14 +5,39 @@ body {
 }
 
 
+.mainBody{
 
+  height: 80vh;
+  $main-tab-margin: 2%;
+  $cover-letter-border-width: 1px;
+  $main-tab-width: calc( (100% - #{ 4 * $main-tab-margin } - #{ 2 * $cover-letter-border-width } )/2 );
 
-.input-controls{
-  width: 50%;
+  .input-controls{
+    width: $main-tab-width;
+    display: inline-block;
+    margin: $main-tab-margin;
+
+    .input-tab{
+      height: 100%;
+    }
+  }
+
+  .output-controls{
+    width: $main-tab-width;
+    display: inline-block;
+    margin: $main-tab-margin;
+
+    vertical-align: top;
+    height: 100%;
+
+    #coverLetter{
+      height: calc( #{$main-tab-width} * 1.4142);
+      border-style: solid !important;
+      border: black;
+      border-width: $cover-letter-border-width;
+    }  
+  }
 }
-
-
-
 
 
 

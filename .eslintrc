@@ -11,9 +11,12 @@
     "browser": true,
     "node": true,
     "mocha": true,
-    "es6": true,
-    "production": {
-      "plugins": ["transform-es2015-modules-commonjs"]
+    "es6": true
+  },
+
+  "settings": {
+    "import/resolver": {
+      "babel-module": {}
     }
   },
 
@@ -41,6 +44,11 @@
     "no-multiple-empty-lines":"warn",
     "spaced-comment": "warn",
     "react/jsx-closing-tag-location":"warn",
-    "no-trailing-spaces":"warn"
+    "no-trailing-spaces":"warn",
+    "react/jsx-indent-props":"warn", 
+    "no-debugger":"warn",
+    "react/prop-types":"warn",
+    "new-cap":"warn", 
+    "import/prefer-default-export": "warn"
   }
 }

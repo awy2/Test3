@@ -1,5 +1,6 @@
 {
   "presets": [
+    "flow",
     ["es2015"],
     "stage-2",
     "react",
@@ -7,6 +8,13 @@
   ],
 
   "plugins": [
+    ["module-resolver", {
+      "root": ["./app"],
+      "alias": {
+        "components": "./app/components",
+        "contactOperations": "./app/state/ducks/contact/"
+      }
+    }],
     "react-hot-loader/babel"
   ]
 }
