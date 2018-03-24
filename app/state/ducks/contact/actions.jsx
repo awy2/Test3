@@ -1,53 +1,62 @@
+// @flow
+
 import * as types from './types';
 
-const companyChange = (company) => {
+const companyChange = (company: string) : types.CompanyChangedAction => {
     return {
         type: types.COMPANY_CHANGED,
-        company 
-    }
-}   
+        company,
+    };
+};
 
-const lastNameChange = (lastName) => {
-    return {  
+const lastNameChange = (lastName: string) : types.LastNameChangedAction => {
+    return {
         type: types.LAST_NAME_CHANGED,
-        lastName 
-    }
-}
+        lastName,
+    };
+};
 
-const firstNameChange = (firstName) => {
+const firstNameChange = (firstName: string) : types.FirstNameChangedAction => {
     return {
         type: types.FIRST_NAME_CHANGED,
-        firstName 
-    }
-}
+        firstName,
+    };
+};
 
-const addressChange = (address) => {
+const addressChange = (address: string) : types.AddressChangedAction => {
     return {
         type: types.ADDRESS_CHANGED,
-        address 
-    }
-}
+        address,
+    };
+};
 
-const cityChange = (city) => {
+const cityChange = (city: string) : types.CityChangedAction => {
     return {
         type: types.CITY_CHANGED,
-        city 
-    }
-}
+        city,
+    };
+};
 
-const provinceChange = (province) => {
+const provinceChange = (province: string) : types.ProvinceChangedAction => {
     return {
         type: types.PROVINCE_CHANGED,
-        province 
-    }
-}
+        province,
+    };
+};
 
-const zipCodeChange = (zipCode) => {
+const zipCodeChange = (zipCode: string) : types.ZipChangedAction => {
     return {
         type: types.ZIP_CHANGED,
-        zipCode 
-    }
-}
+        zipCode,
+    };
+};
+
+const positionChange = (position: string) : types.PositionChangedAction => {
+    return {
+        type: types.POSITION_CHANGED,
+        position,
+    };
+};
 
 export {
     companyChange,
@@ -56,5 +65,6 @@ export {
     addressChange,
     cityChange,
     provinceChange,
-    zipCodeChange
+    zipCodeChange,
+    positionChange,
 };

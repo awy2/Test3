@@ -1,12 +1,12 @@
-import {    
+import {
     companyChange,
     lastNameChange,
     firstNameChange,
     addressChange,
     cityChange,
     provinceChange,
-    zipCodeChange 
-} from "./actions";
+    zipCodeChange,
+} from './actions';
 
 
 export default {
@@ -16,5 +16,5 @@ export default {
     addressChange,
     cityChange,
     provinceChange,
-    zipCodeChange
+    zipCodeChange,
 };

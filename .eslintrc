@@ -30,12 +30,13 @@
     "arrow-body-style": "off",
     "no-unused-vars": "warn", 
     "eol-last": "warn",
-    "indent": "warn", 
+    "indent": [ "warn", 4 ],
     "object-curly-spacing": "warn",
     "comma-dangle":"warn",
     "space-before-blocks":"warn",
     "array-bracket-spacing":"warn",
-    "react/jsx-indent":"warn",
+    "react/jsx-indent": [ "warn", 4 ],
+    "react/jsx-indent-props": [ "warn", 4 ],
     "prefer-const":"warn",
     "quotes":"warn",
     "space-in-parens":"warn",
@@ -45,10 +46,10 @@
     "spaced-comment": "warn",
     "react/jsx-closing-tag-location":"warn",
     "no-trailing-spaces":"warn",
-    "react/jsx-indent-props":"warn", 
     "no-debugger":"warn",
-    "react/prop-types":"warn",
+    "react/prop-types":"off",
     "new-cap":"warn", 
-    "import/prefer-default-export": "warn"
+    "import/prefer-default-export": "off",
+    "max-len": "warn"
   }
 }
