@@ -4,8 +4,9 @@ import React, { Component } from 'react';
 import { Tabs, Tab } from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
 
-import ContactTab from './ContactTab';
+import JobPostingTab from './JobPostingTab';
 import IntroTab from './IntroTab';
+import BodyTab from './BodyTab';
 
 export default class InputControls extends Component {
     constructor(props) {
@@ -39,13 +40,13 @@ export default class InputControls extends Component {
                     onChangeIndex={this.handleChange}
                 >
                     <div className="input-tab">
-                        <ContactTab />
+                        <JobPostingTab />
                     </div>
                     <div className="input-tab">
                         <IntroTab />
                     </div>
                     <div className="input-tab">
-                        slide n°3
+                        <BodyTab />
                     </div>
                     <div className="input-tab">
                         slide n°2

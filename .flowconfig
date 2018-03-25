@@ -7,5 +7,6 @@ app
 [lints]
 
 [options]
+module.name_mapper='^postingOperations\(.*\)$' -> '<PROJECT_ROOT>/app/state/ducks/posting\1'
 
 [strict]

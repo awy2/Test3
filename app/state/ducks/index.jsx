@@ -1,1 +1,1 @@
-export { default as contact } from './contact';
+export { default as posting } from './posting';

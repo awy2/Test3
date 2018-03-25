@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+// eslint-disable-next-line react/prefer-stateless-function
 class IntroTab extends Component {
     render() {
         return (

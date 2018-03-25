@@ -14,9 +14,11 @@ class OutputControl extends Component {
     }
 
     onPrintPDF = () => {
+        // eslint-disable-next-line new-cap
         const doc = new jsPDF();
         const source = document.getElementById('coverLetter');
         const specialElementHandlers = {
+            // eslint-disable-next-line func-names
             '#myId': function() { // element, renderer
                 return true;
             },
@@ -35,7 +37,7 @@ class OutputControl extends Component {
         return (
             <div className="output-controls">
                 <CoverLetter />
-                <FlatButton label="Print PDF" onClick={this.onPrintPDF} />
+                <FlatButton label="Print PDF" onClick={this.onPrintPDF} className="print-pdf-button" />
             </div>
         );
     }

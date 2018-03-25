@@ -31,7 +31,7 @@ const mapStateToProps = (state) => {
         city,
         province,
         zipcode,
-    } = state.contact;
+    } = state.posting;
 
     return {
         company,

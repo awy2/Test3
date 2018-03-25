@@ -50,6 +50,7 @@
     "react/prop-types":"off",
     "new-cap":"warn", 
     "import/prefer-default-export": "off",
-    "max-len": "warn"
+    "max-len": "warn", 
+    "no-return-assign": "warn"
   }
 }

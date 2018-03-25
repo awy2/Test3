@@ -58,6 +58,13 @@ const positionChange = (position: string) : types.PositionChangedAction => {
     };
 };
 
+const descriptionChange = (description: string) : types.DescriptionChangedAction => {
+    return {
+        type: types.DESCRIPTION_CHANGED,
+        description,
+    };
+};
+
 export {
     companyChange,
     lastNameChange,
@@ -67,4 +74,5 @@ export {
     provinceChange,
     zipCodeChange,
     positionChange,
+    descriptionChange,
 };

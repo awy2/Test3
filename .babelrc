@@ -12,7 +12,7 @@
       "root": ["./app"],
       "alias": {
         "components": "./app/components",
-        "contactOperations": "./app/state/ducks/contact/"
+        "postingOperations": "./app/state/ducks/posting/"
       }
     }],
     "react-hot-loader/babel"
