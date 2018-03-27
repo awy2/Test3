@@ -6,7 +6,7 @@ class BodyTab extends Component {
     render() {
         return (
             <div className="bdoy-tab">
-                <h1>Body</h1>
+                <h1>Placeholder</h1>
             </div>
         );
     }

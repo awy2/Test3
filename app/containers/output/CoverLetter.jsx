@@ -10,19 +10,35 @@ class CoverLetter extends Component {
     }
 
     render() {
+        const date = new Date();
+
+        const {
+            company,
+            contactLastName,
+            contactFirstName,
+            address,
+            city,
+            province,
+            zipCode,
+        } = this.props;
+
+        const location =  `${address}${city && address ? ', ' : ''}${city}`
+
         return (
             <div id="coverLetter">
-                <h4>{ this.props.company }</h4>
-                <h4>{ this.props.address }</h4>
-                <h4>{ this.props.city }</h4>
-                <h4>{ this.props.province }</h4>
-                <h4>{ this.props.zipcode }</h4>
+                <p>{ date.toDateString() }</p>
+
+                <p>{ company }</p>
+                <p>{ location }</p>
+                <p>{ province }</p>
+                <p>{ zipCode }</p>
             </div>
         );
     }
 }
 
 const mapStateToProps = (state) => {
+    
     const {
         company,
         contactLastName,
@@ -30,7 +46,7 @@ const mapStateToProps = (state) => {
         address,
         city,
         province,
-        zipcode,
+        zipCode,
     } = state.posting;
 
     return {
@@ -40,7 +56,7 @@ const mapStateToProps = (state) => {
         address,
         city,
         province,
-        zipcode,
+        zipCode,
     };
 };
 

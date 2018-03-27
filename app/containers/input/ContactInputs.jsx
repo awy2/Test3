@@ -10,9 +10,8 @@ import { postingOperations, PostingActions } from 'postingOperations';
 
 type Props = {
     company: string,
-    contactLastName: string,
-    contactLastName: string,
-    contactFirstName: string,
+    lastName: string,
+    firstName: string,
     address: string,
     city: string,
     province: string,
@@ -27,13 +26,13 @@ class ContactInputs extends Component<Props> {
         const target = get(event, 'target', null);
 
         if (target instanceof HTMLInputElement) {
-            dispatch(postingOperations.companyChange(event.target));
+            dispatch(postingOperations.companyChange(target.value));
         }
     }
 
-    onLastNameChange = (event: Event) => {
+    onLastNameChange = (event) => {
         const { dispatch } = this.props;
-        const target = get(event, 'target', null);
+        const target = get(event, 'target', null);        
 
         if (target instanceof HTMLInputElement) {
             dispatch(postingOperations.lastNameChange(target.value));
@@ -45,7 +44,7 @@ class ContactInputs extends Component<Props> {
         const target = get(event, 'target', null);
 
         if (target instanceof HTMLInputElement) {
-            dispatch(postingOperations.firstNameChange(event.target.value));
+            dispatch(postingOperations.firstNameChange(target.value));
         }
     }
 
@@ -54,7 +53,7 @@ class ContactInputs extends Component<Props> {
         const target = get(event, 'target', null);
 
         if (target instanceof HTMLInputElement) {
-            dispatch(postingOperations.cityChange(event.target.value));
+            dispatch(postingOperations.addressChange(target.value));
         }
     }
 
@@ -63,7 +62,7 @@ class ContactInputs extends Component<Props> {
         const target = get(event, 'target', null);
 
         if (target instanceof HTMLInputElement) {
-            dispatch(postingOperations.addressChange(event.target.value));
+            dispatch(postingOperations.cityChange(target.value));
         }
     }
 
@@ -72,7 +71,7 @@ class ContactInputs extends Component<Props> {
         const target = get(event, 'target', null);
 
         if (target instanceof HTMLInputElement) {
-            dispatch(postingOperations.provinceChange(event.target.value));
+            dispatch(postingOperations.provinceChange(target.value));
         }
     }
 
@@ -81,7 +80,7 @@ class ContactInputs extends Component<Props> {
         const target = get(event, 'target', null);
 
         if (target instanceof HTMLInputElement) {
-            dispatch(postingOperations.zipCodeChange(event.target.value));
+            dispatch(postingOperations.zipCodeChange(target.value));
         }
     }
 
@@ -90,7 +89,7 @@ class ContactInputs extends Component<Props> {
         const target = get(event, 'target', null);
 
         if (target instanceof HTMLInputElement) {
-            dispatch(postingOperations.positionChangeChange(event.target.value));
+            dispatch(postingOperations.positionChange(target.value));
         }
     }
 
@@ -98,8 +97,8 @@ class ContactInputs extends Component<Props> {
         return (
             <div className="contact-tab">
                 <TextField onChange={this.onCompanyChange} floatingLabelText="Company" value={this.props.company} />
-                <TextField onChange={this.onLastNameChange} floatingLabelText="Last Name" value={this.props.contactLastName} />
-                <TextField onChange={this.onFirstNameChange} floatingLabelText="First Name" value={this.props.contactFirstName} />
+                <TextField onChange={this.onLastNameChange} floatingLabelText="Last Name" value={this.props.lastName} />
+                <TextField onChange={this.onFirstNameChange} floatingLabelText="First Name" value={this.props.firstName} />
                 <TextField onChange={this.onAddressChange} floatingLabelText="Address" value={this.props.address} />
                 <TextField onChange={this.onCityChange} floatingLabelText="City" value={this.props.city} />
                 <TextField onChange={this.onProvinceChange} floatingLabelText="Province" value={this.props.province} />
@@ -113,19 +112,19 @@ class ContactInputs extends Component<Props> {
 const mapStateToProps = (state) => {
     const {
         company,
-        contactLastName,
-        contactFirstName,
+        lastName,
+        firstName,
         address,
         city,
         province,
         zipCode,
         position,
-    } = state;
+    } = state.posting;
 
     return {
         company,
-        contactLastName,
-        contactFirstName,
+        lastName,
+        firstName,
         address,
         city,
         province,

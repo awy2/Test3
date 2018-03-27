@@ -10,15 +10,15 @@ const ZIP_CHANGED = 'ZIP_CHANGED';
 const POSITION_CHANGED = 'POSITION_CHANGED';
 const DESCRIPTION_CHANGED = 'DESCRIPTION_CHANGED';
 
-export type CompanyChangedAction = { type: "COMPANY_CHANGED", company: string };
-export type LastNameChangedAction = { type: "LAST_NAME_CHANGED", lastName: string };
-export type FirstNameChangedAction = { type: "FIRST_NAME_CHANGED", firstName: string };
-export type AddressChangedAction = { type: "ADDRESS_CHANGED", address: string };
-export type CityChangedAction = { type: "CITY_CHANGED", city: string };
-export type ProvinceChangedAction = { type: "PROVINCE_CHANGED", province: string };
-export type ZipChangedAction = { type: "ZIP_CHANGED", zipCode: string };
-export type PositionChangedAction = { type: "POSITION_CHANGED", position: string };
-export type DescriptionChangedAction = { type: "DESCRIPTION_CHANGED", description: string };
+export type CompanyChangedAction = { +type: 'COMPANY_CHANGED', company: string };
+export type LastNameChangedAction = { +type: 'LAST_NAME_CHANGED', lastName: string };
+export type FirstNameChangedAction = { +type: 'FIRST_NAME_CHANGED', firstName: string };
+export type AddressChangedAction = { +type: 'ADDRESS_CHANGED', address: string };
+export type CityChangedAction = { +type: 'CITY_CHANGED', city: string };
+export type ProvinceChangedAction = { +type: 'PROVINCE_CHANGED', province: string };
+export type ZipChangedAction = { +type: 'ZIP_CHANGED', zipCode: string };
+export type PositionChangedAction = { +type: 'POSITION_CHANGED', position: string };
+export type DescriptionChangedAction = { +type: 'DESCRIPTION_CHANGED', description: string };
 
 export type PostingActions = CompanyChangedAction
                             | LastNameChangedAction

@@ -1,33 +1,41 @@
+// @flow
+
 import React, { Component } from 'react';
-
-
-import { Tabs, Tab } from 'material-ui/Tabs';
+import Tab from 'material-ui/Tabs/Tab';
+import Tabs from 'material-ui/Tabs/Tabs';
 import SwipeableViews from 'react-swipeable-views';
 
 import JobPostingTab from './JobPostingTab';
 import IntroTab from './IntroTab';
 import BodyTab from './BodyTab';
+import KeywordsTab from './KeywordsTab';
 
-export default class InputControls extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            slideIndex: 0,
-        };
-    }
+type Props = { };
 
-    handleChange = (value) => {
+type State = {
+    slideIndex: number,
+};
+
+export default class InputControls extends Component<Props, State> {
+
+    state = {
+        slideIndex: 4,
+    };
+
+    handleChange = (value : number) => {
         this.setState({
             slideIndex: value,
         });
     };
 
     render() {
+        const currentTabIndex = this.state.slideIndex;
         return (
             <div className="input-controls">
+        
                 <Tabs
                     onChange={this.handleChange}
-                    value={this.state.slideIndex}
+                    value={currentTabIndex}
                 >
                     <Tab label="Contact" value={0} />
                     <Tab label="Intro" value={1} />
@@ -35,8 +43,9 @@ export default class InputControls extends Component {
                     <Tab label="End" value={3} />
                     <Tab label="Key Words" value={4} />
                 </Tabs>
+
                 <SwipeableViews
-                    index={this.state.slideIndex}
+                    index={currentTabIndex}
                     onChangeIndex={this.handleChange}
                 >
                     <div className="input-tab">
@@ -49,10 +58,10 @@ export default class InputControls extends Component {
                         <BodyTab />
                     </div>
                     <div className="input-tab">
-                        slide n°2
+                        Placeholder
                     </div>
                     <div className="input-tab">
-                        slide n°3
+                        <KeywordsTab />
                     </div>
                 </SwipeableViews>
             </div>

@@ -5,8 +5,8 @@ import * as types from './types';
 
 export type PostingState = {
     +company: string;
-    +contactLastName: string;
-    +contactFirstName: string;
+    +lastName: string;
+    +firstName: string;
     +address: string;
     +city: string;
     +province: string;
@@ -17,8 +17,8 @@ export type PostingState = {
 
 const initialState: PostingState = {
     company: '',
-    contactLastName: '',
-    contactFirstName: '',
+    lastName: '',
+    firstName: '',
     address: '',
     city: '',
     province: 'BC',
@@ -27,7 +27,7 @@ const initialState: PostingState = {
     description: '',
 };
 
-export default function reducers(state: PostingState = initialState, action: types.PostingActions) {
+export default function reducers(state: PostingState = initialState, action: types.PostingActions) : PostingState {
     switch (action.type) {
     case types.COMPANY_CHANGED:
         return Object.assign({}, state, { company: get(action, 'company', '') });

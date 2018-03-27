@@ -16,9 +16,9 @@
 
 I made some odd design choices because I wanted to do things differently. Some of them are:
 
+- `Duck structure` - The React project I work on at work was a first attempt for the company, so we followed the file stucture used in some of the offical documentation. As the project got bigger, some things got more annoying. I read about the '[Ducks file structure](https://github.com/erikras/ducks-modular-redux)' and wanted to try it. I also Flow type and will be adding jest test cases to the reducers to see how that goes for maintainability
 
-- Duck structure: The React project I work on at work was a first attempt for the company, so we followed the file stucture used in some of the offical documentation. As the project got bigger, some things got more annoying. I read about the '[Ducks file structure](https://github.com/erikras/ducks-modular-redux)' and wanted to try it. I also Flow type and will be adding jest test cases to the reducers to see how that goes for maintainability
-
+- `Inconsistency reducers` - I created the "posting" reducer first. Unlike the project at work, I was using a "duck structure" and Flow with it. I got them to work together acceptably ( but had somethings I didn't like about them).  When I made the "keyword" reducers, I wanted to try different naming scheme and things differently to see how it'll look. Afterward I'll redo all the reducer so they are the same. 
 
 
 

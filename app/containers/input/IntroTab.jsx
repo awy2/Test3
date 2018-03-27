@@ -6,7 +6,7 @@ class IntroTab extends Component {
     render() {
         return (
             <div className="intro-tab">
-                <h1>asdf</h1>
+                <h1>Placeholder</h1>
             </div>
         );
     }

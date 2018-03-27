@@ -12,7 +12,10 @@
       "root": ["./app"],
       "alias": {
         "components": "./app/components",
-        "postingOperations": "./app/state/ducks/posting/"
+        "postingOperations": "./app/state/ducks/posting/",
+        "keywordsOperations": "./app/state/ducks/keywords/operations",
+        "keywords": "./app/state/ducks/keywords/",
+        "data": "./app/data/"
       }
     }],
     "react-hot-loader/babel"

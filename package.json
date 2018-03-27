@@ -1,6 +1,6 @@
 {
   "name": "coverletter-generator",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A cover letter generator",
   "main": "index.js",
   "scripts": {
@@ -47,6 +47,8 @@
     "lodash": "^4.17.5",
     "material-ui": "^0.20.0",
     "pouchdb": "^6.4.3",
+    "pouchdb-browser": "^6.4.3",
+    "pouchdb-find": "^6.4.3",
     "react": "16.2.0",
     "react-dnd": "^2.5.4",
     "react-dom": "16.2.0",
@@ -56,7 +58,9 @@
     "react-swipeable-views": "^0.12.13",
     "redux": "^3.7.2",
     "redux-devtools": "^3.4.1",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "redux-pouchdb": "^0.1.1",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

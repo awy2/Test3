@@ -8,5 +8,8 @@ app
 
 [options]
 module.name_mapper='^postingOperations\(.*\)$' -> '<PROJECT_ROOT>/app/state/ducks/posting\1'
+module.name_mapper='^keywordsOperations\(.*\)$' -> '<PROJECT_ROOT>/app/state/ducks/keywords/operations\1'
+module.name_mapper='^keywords\(.*\)$' -> '<PROJECT_ROOT>/app/state/ducks/keywords\1'
+module.name_mapper='^data\(.*\)$' -> '<PROJECT_ROOT>/app/data\1'
 
 [strict]
