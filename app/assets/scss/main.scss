@@ -1,71 +1,101 @@
-$color: #262828;
+$color: #d62525;
 $description-highlight-color: #123456;
-$print-pdf-color: rgb(0, 188, 212);
+$standard-button-color: rgb(0, 188, 212);
 
-body {
-  color: $color;
+$text-opacity: 0.3;
+
+.descirption-label{
+    opacity: $text-opacity;
 }
 
 .description-container{
-    height: 500px;
+    $description-height: 200px;
+    $textarea-border: 1px;
+
+    height: $description-height;
     position: relative;
+    overflow-y: hidden !important;
+    overflow-x: hidden !important;
+
+    label{
+
+    }
+
+    textarea{
+        height: $description-height;
+        border-color: lightgray !important;
+        resize: none !important;
+    }
+
+    .rth-container {
+        display: inline-block;
+        position: relative;
+        overflow: hidden !important;
+        -webkit-text-size-adjust: none !important;
+        background: white;
+       
+      }
+      
+      .rth-backdrop {
+        position: absolute !important;
+        bottom: 0 !important;
+        width: 100% !important;
+        left: 0 !important;
+        overflow-x: hidden !important;
+      }
+      
+      .rth-highlights {
+        width: auto !important;
+        height: auto !important;
+        border-color: transparent !important;
+        white-space: pre-wrap !important;
+        word-wrap: break-word !important;
+        color: transparent !important;
+        overflow: hidden !important;
+      }
+      
+      .rth-input {
+        display: block !important;
+        position: relative !important;
+        margin: 0;
+        padding: 0;
+        border-radius: 0;
+        font: inherit;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+      }
+      
+      .rth-content {
+        border: $textarea-border solid;
+        background: none transparent !important;
+        width: calc(100% - #{2 * $textarea-border})!important;
+      }
+      
+      .rth-content mark {
+        color: inherit;
+      }
 }
 
-.rth-container {
-    display: inline-block;
-    position: relative;
-    overflow: hidden !important;
-    -webkit-text-size-adjust: none !important;
-    background: white;
-  }
-  
-  .rth-backdrop {
-    position: absolute !important;
-    top: 0 !important;
-    right: -99px !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    padding-right: 99px !important;
-    overflow-x: hidden !important;
-    overflow-y: auto !important;
-  }
-  
-  .rth-highlights {
-    width: auto !important;
-    height: auto !important;
-    border-color: transparent !important;
-    white-space: pre-wrap !important;
-    word-wrap: break-word !important;
-    color: transparent !important;
-    overflow: hidden !important;
-  }
-  
-  .rth-input {
-    display: block !important;
-    position: relative !important;
-    margin: 0;
-    padding: 0;
-    border-radius: 0;
-    font: inherit;
-    overflow-x: hidden !important;
-    overflow-y: auto !important;
-  }
-  
-  .rth-content {
-    border: 1px solid;
-    background: none transparent !important;
-    width: 80% !important;
-  }
-  
-  .rth-content mark {
-    color: inherit;
-  }
 
+.draggable-sentence-container{
+    display: inline-flex !important;
+    margin: 4px !important;
+    width:30% !important;
 
+    .draggable-sentence-chip{
+        width: 100% !important;
 
+        span{
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            width: 80% !important;
+        }
+    }
+}
 
-
-
+.string-array-editor{
+    width:80% !important;
+}
 
 .mainBody{
 
@@ -81,7 +111,27 @@ body {
 
     .input-tab{
       height: 100%;
+
+      .job-posting-tab{
+          padding: 8px;
+      }
     }
+
+    /***************Keyword Tab******************************/
+    .keywords-tab{
+        .keywords-selector{
+            .keywords-dropdown{
+                width: 50% !important;
+            }
+    
+            .keywords-delete-button{
+                button{
+                    background-color: $standard-button-color !important;
+                }
+            }
+        }
+    }
+    
   }
 
   .output-controls{
@@ -100,7 +150,7 @@ body {
     }  
 
     .print-pdf-button{
-        background-color: $print-pdf-color !important;
+        background-color: $standard-button-color !important;
     }
   }
 }

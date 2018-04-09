@@ -1,23 +1,26 @@
 {
-  "presets": [
-    "flow",
-    ["es2015"],
-    "stage-2",
-    "react",
-    "react-boilerplate"
-  ],
+    "presets": [
+        "flow",
+        ["es2015"],
+        "stage-2",
+        "react",
+        "react-boilerplate"
+    ],
 
-  "plugins": [
-    ["module-resolver", {
-      "root": ["./app"],
-      "alias": {
-        "components": "./app/components",
-        "postingOperations": "./app/state/ducks/posting/",
-        "keywordsOperations": "./app/state/ducks/keywords/operations",
-        "keywords": "./app/state/ducks/keywords/",
-        "data": "./app/data/"
-      }
-    }],
-    "react-hot-loader/babel"
-  ]
+    "plugins": [
+        ["module-resolver", {
+            "root": ["./app"],
+            "alias": {
+                "keywords": "./app/state/ducks/keywords/",
+                "keywordsOperations": "./app/state/ducks/keywords/operations",
+                "posting": "./app/state/ducks/posting/",
+                "notification": "./app/state/ducks/notification",
+                "intro": "./app/state/ducks/intro",
+                "data": "./app/data/",
+                "components": "./app/components/",
+                "util": "./app/util/"
+                }
+            }],
+        "react-hot-loader/babel"
+    ]
 }

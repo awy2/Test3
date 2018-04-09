@@ -7,9 +7,12 @@ app
 [lints]
 
 [options]
-module.name_mapper='^postingOperations\(.*\)$' -> '<PROJECT_ROOT>/app/state/ducks/posting\1'
+module.name_mapper='^posting\(.*\)$' -> '<PROJECT_ROOT>/app/state/ducks/posting\1'
 module.name_mapper='^keywordsOperations\(.*\)$' -> '<PROJECT_ROOT>/app/state/ducks/keywords/operations\1'
 module.name_mapper='^keywords\(.*\)$' -> '<PROJECT_ROOT>/app/state/ducks/keywords\1'
+module.name_mapper='^intro\(.*\)$' -> '<PROJECT_ROOT>/app/state/ducks/intro\1'
+module.name_mapper='^notification\(.*\)$' -> '<PROJECT_ROOT>/app/state/ducks/notification\1'
 module.name_mapper='^data\(.*\)$' -> '<PROJECT_ROOT>/app/data\1'
-
+module.name_mapper='^components\(.*\)$' -> '<PROJECT_ROOT>/app/components\1'
+module.name_mapper='^util\(.*\)$' -> '<PROJECT_ROOT>/app/util\1'
 [strict]

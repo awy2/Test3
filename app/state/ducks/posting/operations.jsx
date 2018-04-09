@@ -50,7 +50,7 @@ const descriptionChange = (description: string): DescriptionChangedAction => {
     return action.descriptionChange(description);
 };
 
-export default {
+export {
     companyChange,
     lastNameChange,
     firstNameChange,

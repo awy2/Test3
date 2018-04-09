@@ -1,17 +1,36 @@
+// @flow
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import get from 'lodash/get';
 
-import { postingOperations } from 'postingOperations';
+import { keyword } from 'data';
+import { postingOperations, postingSelectors } from 'posting';
+import { keywordsSelectors } from 'keywords';
 
-class Description extends Component {
-    onDescriptionChange = (event) => {
-        const { dispatch } = this.props;
-        dispatch(postingOperations.descriptionChange(event.target.value));
+type Props = {
+    description: string,
+    //wrapIn: string,
+    keywords: Array<keyword>,
+    onChangeEvent: Function,
+};
+
+type State = {
+    highligthScroll: number;
+};
+
+class Description extends Component<Props, State> {
+
+    constructor(props) {
+        super(props);
+        // eslint-disable-next-line no-underscore-dangle
+        
+        this.state = {
+            highligthScroll: 0,
+        };
     }
 
     getHighlights() {
-        const CLOSE_MARK = `</${this.props.wrapIn}>`;
+        //const CLOSE_MARK = `</${this.props.wrapIn}>`;
 
         // escape HTML
         let highlightedMarkup = this.props.description.replace(/&/g, '&amp;')
@@ -31,20 +50,41 @@ class Description extends Component {
         }
 
         // this keeps scrolling aligned when input ends with a newline
-        highlightedMarkup = highlightedMarkup.replace(new RegExp(`\\n(${CLOSE_MARK})?$`), '\n\n$1');
+        //highlightedMarkup = highlightedMarkup.replace(new RegExp(`\\n(${CLOSE_MARK})?$`), '\n\n$1');
 
         return highlightedMarkup;
     }
 
-    testMatch = values => (values ? values.includes('a') : false);
 
-    stringToIndexedWords = (string) => {
+    getIndexString = (func: Function, resultArray: Array<any>, stringToParse: string) => {
+
+        let execution = func.exec(stringToParse);
+
+        if (execution !== null){
+            let match = execution[0];
+            resultArray.push([execution.index, execution.index + match.length, match]);
+            return this.getIndexString(func, resultArray, stringToParse);
+        }
+
+        return null;
+    }
+
+
+    stringToIndexedWords = (stringToParse: string) => {
         const result = [];
-        const hasWord = /([a-zA-Z']+)/g;
+        const { keywords } = this.props;
+        const keywordsString :Array<string> = keywords.map((keywordObj) => { return keywordObj.keyword; });
+    
+        // TODO fix problem when words contain "|"
+        const regexSearchString: string = keywordsString.join("|").replace(/[-[\]/{}()*+?.\\^$]/g, '\\$&');
+        const regexFromMyArray = new RegExp(`(${regexSearchString})`, 'gi'); // TODO maybe try "//s()//s"
+
+        // TODO replace while loop with tail recurision
+
         let execution;
         // eslint-disable-next-line no-cond-assign
-        while ((execution = hasWord.exec(string)) != null) {
-            const match = execution[1];
+        while ((execution = regexFromMyArray.exec(stringToParse)) != null) {
+            let match = execution[0];
             result.push([execution.index, execution.index + match.length, match]);
         }
         return result;
@@ -52,8 +92,8 @@ class Description extends Component {
 
     doHighlight = (input) => {
         const wordsVec = this.stringToIndexedWords(input);
+
         return wordsVec.map(([start, end, word]) => {
-            if (this.testMatch(word)) { return [start, end, 'keyword']; }
             return [start, end];
         });
     }
@@ -90,29 +130,34 @@ class Description extends Component {
         return input;
     }
 
-    render() {
-        const descriptionText = get(this, 'props.description', '');
+    handleScroll = (event) => {
+        const { scrollTop } = event.target;
+        this.setState({ highligthScroll: scrollTop });
+    }
 
+    render() {
+        const { description: descriptionText = '' } = this.props;
+            //   <label>Description</label>
+        /* eslint-disable no-return-assign */
+        /* eslint-disable react/no-danger */
         return (
-            <div className="description-container">
-                <div className="rth-backdrop" ref={backdrop => this.backdrop = backdrop}>
-                    <div
-                        className="rth-highlights rth-content"
-                        dangerouslySetInnerHTML={{ __html: this.getHighlights() }}
-                    />
+            <React.Fragment>
+                <span className="descirption-label" >Description</span>
+                <div className="description-container">
+                    <div className="rth-backdrop" style={{ top: -this.state.highligthScroll }} >
+                        <div
+                            className="rth-highlights rth-content"
+                            dangerouslySetInnerHTML={{ __html: this.getHighlights() }}
+                        />
+                    </div>
+                    <textarea className="rth-input rth-content" value={descriptionText} onChange={this.props.onChangeEvent} onScroll={this.handleScroll} />
                 </div>
-                <textarea className="rth-input rth-content" value={descriptionText} onChange={this.onDescriptionChange} />
-            </div>
+            </React.Fragment>
         );
+        /* eslint-enable no-return-assign */
+        /* eslint-enable react/no-danger */
     }
 }
 
-const mapStateToProps = (state) => {
-    const { description } = state.posting;
 
-    return {
-        description,
-    };
-};
-
-export default connect(mapStateToProps)(Description);
+export default connect()(Description);

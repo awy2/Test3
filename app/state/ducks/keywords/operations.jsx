@@ -4,7 +4,9 @@ import PouchDB from 'pouchdb';
 import PouchFind from 'pouchdb-find';
 import type { Dispatch } from 'redux';
 import { keyword } from 'data';
-//import { keywordGet, keywordAdd }  from './actions';
+
+import * as showNotificationOperations from 'notification/operations';
+import type { NotificationAction } from 'notification/types';
 import * as action from './actions';
 
 import type {
@@ -17,81 +19,70 @@ import type {
 
 PouchDB.plugin(PouchFind);
 
-const database = "http://localhost:5984/test";
+const databaseName : string = 'http://localhost:5984/test'; // 'offline';
+const PouchInstance = new PouchDB(databaseName);
 
-const keywordsGet = (dispatch : Dispatch<KeywordActions>) : ?KeywordGetAction => {
-    const db = new PouchDB(database);
 
-    db.find({
-        selector: {keyword: {$gt: null}},
-    })
-    .then((result) => {
-        let keywordsResults : Array<keyword> = result.docs;
+const keywordsGet = () => {
+    return (dispatch : Dispatch<KeywordActions>) : ?KeywordGetAction => {
+        PouchInstance.find({
+            selector: { keyword: { $gt: null } },
+        })
+            .then((result) => {
+                const keywordsResults : Array<keyword> = result.docs;
 
-        dispatch(action.keywordGet(keywordsResults));
-    })
-    .catch((err) => {
-        console.log(err);
-    });
-}
+                dispatch(action.keywordGet(keywordsResults));
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+};
 
 const keywordInsert = (newKeyword : keyword) => {
-  
-    return (dispatch : Dispatch<KeywordActions> ) : ?KeywordAddAction  => {
-        const db = new PouchDB(database);
-
-        db.put(newKeyword)
-        .then(() => {
-            dispatch(action.keywordAdd(newKeyword));
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-    }
+    return (dispatch : Dispatch<KeywordActions>) : ?KeywordAddAction => {
+        PouchInstance.put(newKeyword)
+            .then(() => {
+                dispatch(action.keywordAdd(newKeyword));
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
 };
 
 const keywordRemove = (deletedKeyword : keyword) => {
-
-    return (dispatch : Dispatch<KeywordActions> ) : ?KeywordDeleteAction  => {
-        const db = new PouchDB(database);
-
+    return (dispatch : Dispatch<KeywordActions>) : ?KeywordDeleteAction => {
         // eslint-disable-next-line no-underscore-dangle
-        db.get(deletedKeyword._id).then((doc) => {
-            debugger
-            db.remove(doc).then(() => {
-                debugger
+        PouchInstance.get(deletedKeyword._id).then((doc) => {
+            PouchInstance.remove(doc).then(() => {
                 dispatch(action.keywordDelete(deletedKeyword));
             }).catch((err) => {
-                debugger
                 console.log(err);
             });
         }).catch((err) => {
-            debugger
             console.log(err);
         });
-    }
+    };
 };
 
-
 const keywordUpdate = (updateKeyword : keyword) => {
-
-    return (dispatch : Dispatch<KeywordActions> ) : ?KeywordUpdateAction  => {
-        const db = new PouchDB(database);
-
-       // eslint-disable-next-line no-underscore-dangle
-       db.get(updateKeyword._id)
-       .then((doc) => {
-               // eslint-disable-next-line no-underscore-dangle
-           db.put(Object.assign({}, updateKeyword, {_rev: doc._rev}))
-           .then(() => {
-               dispatch(action.keywordUpdate(updateKeyword));
-           }).catch((err) => {
-               console.log(err);
-           });
-       }).catch((err) => {
-           console.log(err);
-       });
-    }
+    return (dispatch : Dispatch<KeywordActions | NotificationAction>) : ?KeywordUpdateAction => {
+        // eslint-disable-next-line no-underscore-dangle
+        PouchInstance.get(updateKeyword._id)
+            .then((doc) => {
+                // eslint-disable-next-line no-underscore-dangle
+                PouchInstance.put(Object.assign({}, updateKeyword, { _rev: doc._rev }))
+                    .then(() => {
+                        dispatch(action.keywordUpdate(updateKeyword));
+                        dispatch(showNotificationOperations.showNotificationMessage(`Keyword "${updateKeyword.keyword}" has been updated`));
+                    }).catch((err) => {
+                        console.log(err);
+                    });
+            }).catch((err) => {
+                console.log(err);
+            });
+    };
 };
 
 export {

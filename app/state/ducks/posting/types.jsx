@@ -10,6 +10,17 @@ const ZIP_CHANGED = 'ZIP_CHANGED';
 const POSITION_CHANGED = 'POSITION_CHANGED';
 const DESCRIPTION_CHANGED = 'DESCRIPTION_CHANGED';
 
+export type PostingDisplayField = {
+    +company: string;
+    +lastName: string;
+    +firstName: string;
+    +address: string;
+    +city: string;
+    +province: string;
+    +zipCode: string;
+    +position: string;
+};
+
 export type CompanyChangedAction = { +type: 'COMPANY_CHANGED', company: string };
 export type LastNameChangedAction = { +type: 'LAST_NAME_CHANGED', lastName: string };
 export type FirstNameChangedAction = { +type: 'FIRST_NAME_CHANGED', firstName: string };

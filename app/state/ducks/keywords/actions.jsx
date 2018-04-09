@@ -4,10 +4,9 @@ import { keyword } from 'data';
 import * as types from './types';
 
 const keywordGet = (keywords: Array<keyword>) : types.KeywordGetAction => {
-    debugger
     return {
         type: types.KEYWORD_GET,
-        keywords
+        keywords,
     };
 };
 

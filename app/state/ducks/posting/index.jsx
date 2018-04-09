@@ -1,4 +1,11 @@
 import reducer from './reducers';
 
-export { default as postingOperations } from './operations';
+import * as postingOperations from './operations';
+import * as postingSelectors from './selectors';
+
+export {
+    postingOperations,
+    postingSelectors,
+};
+
 export default reducer;

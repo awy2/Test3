@@ -1,62 +1,56 @@
+// @flow
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { postingSelectors } from 'posting';
+import { introSelectors } from 'intro';
+import { Sentence } from 'data';
+import { CoverLetterSentence } from 'components';
+import type { PostingDisplayField } from 'posting/types';
 
-class CoverLetter extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+type Props = {
+    postingField: PostingDisplayField,
+    intro: Array<Sentence>,
+};
 
-        };
-    }
+type State = {
+
+};
+
+class CoverLetter extends Component<Props, State> {
+
 
     render() {
         const date = new Date();
 
         const {
-            company,
-            contactLastName,
-            contactFirstName,
-            address,
-            city,
-            province,
-            zipCode,
+            postingField,
+            intro,
         } = this.props;
 
-        const location =  `${address}${city && address ? ', ' : ''}${city}`
+        const location = `${postingField.address}${postingField.city && postingField.address ? ', ' : ''}${postingField.city}`;
 
         return (
             <div id="coverLetter">
                 <p>{ date.toDateString() }</p>
 
-                <p>{ company }</p>
+                <p>{ postingField.company }</p>
                 <p>{ location }</p>
-                <p>{ province }</p>
-                <p>{ zipCode }</p>
+                <p>{ postingField.province }</p>
+                <p>{ postingField.zipCode }</p>
+
+                <p>Dear { `${postingField.lastName} ${postingField.firstName}` }</p>
+                    { intro.map(introSentence => <CoverLetterSentence sentence={introSentence} postingField={postingField} />) }
+
             </div>
         );
     }
 }
 
 const mapStateToProps = (state) => {
-    
-    const {
-        company,
-        contactLastName,
-        contactFirstName,
-        address,
-        city,
-        province,
-        zipCode,
-    } = state.posting;
-
     return {
-        company,
-        contactLastName,
-        contactFirstName,
-        address,
-        city,
-        province,
-        zipCode,
+        postingField: postingSelectors.getDisplayProps(state),
+        intro: introSelectors.getIntro(state),
     };
 };
 

@@ -6,7 +6,7 @@ import type { Dispatch } from 'redux';
 import get from 'lodash/get';
 
 import TextField from 'material-ui/TextField/TextField';
-import { postingOperations, PostingActions } from 'postingOperations';
+import { postingOperations, PostingActions } from 'posting';
 
 type Props = {
     company: string,
@@ -30,16 +30,16 @@ class ContactInputs extends Component<Props> {
         }
     }
 
-    onLastNameChange = (event) => {
+    onLastNameChange = (event: Event) => {
         const { dispatch } = this.props;
-        const target = get(event, 'target', null);        
+        const target = get(event, 'target', null);
 
         if (target instanceof HTMLInputElement) {
             dispatch(postingOperations.lastNameChange(target.value));
         }
     }
 
-    onFirstNameChange = (event) => {
+    onFirstNameChange = (event: Event) => {
         const { dispatch } = this.props;
         const target = get(event, 'target', null);
 
@@ -48,7 +48,7 @@ class ContactInputs extends Component<Props> {
         }
     }
 
-    onAddressChange = (event) => {
+    onAddressChange = (event: Event) => {
         const { dispatch } = this.props;
         const target = get(event, 'target', null);
 
@@ -57,7 +57,7 @@ class ContactInputs extends Component<Props> {
         }
     }
 
-    onCityChange = (event) => {
+    onCityChange = (event: Event) => {
         const { dispatch } = this.props;
         const target = get(event, 'target', null);
 
@@ -66,7 +66,7 @@ class ContactInputs extends Component<Props> {
         }
     }
 
-    onProvinceChange = (event) => {
+    onProvinceChange = (event: Event) => {
         const { dispatch } = this.props;
         const target = get(event, 'target', null);
 
@@ -75,7 +75,7 @@ class ContactInputs extends Component<Props> {
         }
     }
 
-    onZipCodeChange = (event) => {
+    onZipCodeChange = (event: Event) => {
         const { dispatch } = this.props;
         const target = get(event, 'target', null);
 
@@ -84,7 +84,7 @@ class ContactInputs extends Component<Props> {
         }
     }
 
-    onPositionChange = (event) => {
+    onPositionChange = (event: Event) => {
         const { dispatch } = this.props;
         const target = get(event, 'target', null);
 
