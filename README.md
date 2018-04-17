@@ -1,3 +1,12 @@
+## Intro
+
+## TODO 
+- `Add normalizr` -  add normalizr to to make the selector 
+- `Add test suite` - use jest and enzyme to create test, will probably do this before polishing
+- `Refactor` - the 'intro', 'body', and 'end' code is are pretty similar. I need to refactor it to use less code
+- `Fix Flow` - there are a few flow errors that I need to fix, biggest one is figuring out how to use decorator (might need to remove them)
+- `Make "user" information editable` - Want to be able to change name, cell, email, etc
+
 
 ## Starting the dev server
 

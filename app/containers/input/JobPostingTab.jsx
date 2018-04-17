@@ -25,10 +25,9 @@ type State = {
 class JobPostingTab extends Component<Props, State> {
     // TODO: figure out how to handle textarea even for flow
     onDescriptionChange = (event: Object) => {
-        
         const { target = {} } = event;
         const { value = null } = target;
-        
+
         if (value) {
             this.props.descriptionChange(value);
         }

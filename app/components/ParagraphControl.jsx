@@ -18,7 +18,7 @@ type Props = {
     onClickCallBack: Function,
 };
 
-export default class IntroControl extends KeywordControl {
+export default class ParagraphControl extends KeywordControl {
 
     props: Props;
 

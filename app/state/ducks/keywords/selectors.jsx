@@ -3,7 +3,8 @@
 import type { keyword } from 'data';
 import { introKeyword, bodyKeyword, endKeyword } from 'data/keyword';
 import { introSelectors } from 'intro';
-import { sentence, Sentence } from 'data';
+import { bodySelectors } from 'body';
+import { endSelectors } from 'end';
 
 function getKeywords(state: Object): ?Array<keyword> {
     return state.keywords.keywords;
@@ -32,23 +33,42 @@ function getUnusedIntroKeywords(state: Object): ?Array<keyword> {
     const introValue = intro.map(introSentence => introSentence.value);
 
     const introKeywords = state.keywords.keywords.filter(keywordObj => keywordObj.keyword === introKeyword);
-  
+
     return introKeywords.map((introKS) => {
-        return { 
+        return {
             ...introKS,
-            descriptions: introKS.descriptions.filter(description => introValue.indexOf(description) === -1 )
-        }; 
+            descriptions: introKS.descriptions.filter(description => introValue.indexOf(description) === -1),
+        };
     });
 }
 
+function getUnusedBodyKeywords(state: Object): ?Array<keyword> {
+    const body = bodySelectors.getBody(state);
+    const bodyValue = body.map(bodySentence => bodySentence.value);
 
-/*   
-{..reest}
+    const bodyKeywords = state.keywords.keywords.filter(keywordObj => keywordObj.keyword === bodyKeyword);
 
-*/
+    return bodyKeywords.map((bodyKS) => {
+        return {
+            ...bodyKS,
+            descriptions: bodyKS.descriptions.filter(description => bodyValue.indexOf(description) === -1),
+        };
+    });
+}
 
+function getUnusedEndKeywords(state: Object): ?Array<keyword> {
+    const end = endSelectors.getEnd(state);
+    const endValue = end.map(endSentence => endSentence.value);
 
+    const endKeywords = state.keywords.keywords.filter(keywordObj => keywordObj.keyword === endKeyword);
 
+    return endKeywords.map((endKS) => {
+        return {
+            ...endKS,
+            descriptions: endKS.descriptions.filter(description => endValue.indexOf(description) === -1),
+        };
+    });
+}
 
 export {
     getKeywords,
@@ -57,4 +77,6 @@ export {
     getBodyKeywords,
     getEndKeywords,
     getUnusedIntroKeywords,
+    getUnusedBodyKeywords,
+    getUnusedEndKeywords,
 };

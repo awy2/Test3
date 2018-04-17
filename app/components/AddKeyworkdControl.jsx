@@ -28,7 +28,7 @@ class AddKeyworkdControl extends Component<Props, State> {
         const newKeyword : keyword = {
             _id: this.state.newKeyword,
             keyword: this.state.newKeyword,
-            description: [],
+            descriptions: [],
         };
 
         if (this.props.keywords.length === 0

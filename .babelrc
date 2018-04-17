@@ -16,6 +16,8 @@
                 "posting": "./app/state/ducks/posting/",
                 "notification": "./app/state/ducks/notification",
                 "intro": "./app/state/ducks/intro",
+                "body": "./app/state/ducks/body",
+                "end": "./app/state/ducks/end",
                 "data": "./app/data/",
                 "components": "./app/components/",
                 "util": "./app/util/"

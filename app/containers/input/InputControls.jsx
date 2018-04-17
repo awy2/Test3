@@ -9,10 +9,13 @@ import SwipeableViews from 'react-swipeable-views';
 import Paper from 'material-ui/Paper/Paper';
 import { keywordAction } from 'keywords';
 import * as keywordsOperations from 'keywordsOperations';
+import HTML5Backend from 'react-dnd-html5-backend';
+import { DragDropContext } from 'react-dnd';
 
 import JobPostingTab from './JobPostingTab';
 import IntroTab from './IntroTab';
 import BodyTab from './BodyTab';
+import EndTab from './EndTab';
 import KeywordsTab from './KeywordsTab';
 
 
@@ -24,6 +27,7 @@ type State = {
     slideIndex: number,
 };
 
+@DragDropContext(HTML5Backend)
 class InputControls extends Component<Props, State> {
     state = {
         slideIndex: 4,
@@ -42,6 +46,7 @@ class InputControls extends Component<Props, State> {
 
     render() {
         const currentTabIndex = this.state.slideIndex;
+
         return (
             <div className="input-controls">
                 <Paper zDepth={4}>
@@ -70,7 +75,7 @@ class InputControls extends Component<Props, State> {
                             <BodyTab />
                         </div>
                         <div className="input-tab">
-                            Placeholder
+                            <EndTab />
                         </div>
                         <div className="input-tab">
                             <KeywordsTab />

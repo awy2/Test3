@@ -1,14 +1,10 @@
 // @flow
 
-import { sentence, Sentence } from 'data';
+import { Sentence } from 'data';
 import { arrayMove } from 'util';
 
 import * as types from './types';
 
-/*
-const keywordStart :string = 'KEYWORDSTART';
-const keywordEnd :string = 'KEYWORDEND'; // TODO get rid of this and use "selector"
-*/
 
 export type IntroState = {
     intro: Array<Sentence>,
@@ -22,28 +18,12 @@ const initialState: IntroState = {
     position: '',
 };
 
-/* const markKeyword = (sentence: string, keywords: Array<string>) => {
-    let newSentence = sentence;
-
-    keywords.forEach((keyword) => {
-        newSentence = sentence.replace(keyword, `${keywordStart}${keyword}${keywordEnd}`);
-    });
-
-    return newSentence;
-};
-
-const unmarkKeyword = (sentence: string): string => {
-    return sentence.replace(keywordStart, '').replace(keywordEnd, '');
-};
-*/
 
 // TODO: instead of doing "action: Object" I want to make it type.IntroActions
 // However flow type is annoying when it come to "disjoint unions". If I make the switch block into an "if else" block
 // I can use an tempt object to access "newSentence", but otherwise flow is giving me errors
 export default function reducers(state: IntroState = initialState, action: Object) : IntroState {
     let newSentence = null;
-    let difference = 0;
-    let test = [];
 
     switch (action.type) {
     case types.INTRO_ADD_SENTENCE:

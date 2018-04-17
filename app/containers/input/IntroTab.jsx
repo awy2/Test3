@@ -4,19 +4,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import type { Dispatch } from 'redux';
+
 import { keyword, Sentence } from 'data';
-
-import { DragDropContext } from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
-
-import ChipInput from 'material-ui-chip-input/lib/ChipInput'
-import Chip from 'material-ui/Chip/Chip';
-
 import { postingSelectors } from 'posting';
-
 import { keywordsSelectors } from 'keywords';
 import { getUsedKeywords } from 'util';
-import { KeywordControl, IntroControl, DraggableChips } from 'components';
+import { KeywordControl, ParagraphControl, DraggableChips } from 'components';
 import { introOperations, introSelectors } from 'intro';
 
 type Props = {
@@ -33,23 +26,19 @@ type State = {
 
 };
 
-@DragDropContext(HTML5Backend)
 class IntroTab extends Component<Props, State> {
-
     onChipDelete = (deleteSentence: Sentence) => {
-        debugger
         this.props.removeSentence(deleteSentence);
     }
 
     getUsedKeywords = () => {
         const { keywords, description } = this.props;
-        let usedKeywords = getUsedKeywords(keywords, description);
-        
-        return usedKeywords; 
+        const usedKeywords = getUsedKeywords(keywords, description);
+
+        return usedKeywords;
     }
 
     addToIntro = (selectedKeyword: keyword, sentenceToAdd: string) => {
-
         const newSentence: Sentence = new Sentence({
             value: sentenceToAdd,
             title: selectedKeyword.keyword,
@@ -59,35 +48,28 @@ class IntroTab extends Component<Props, State> {
     }
 
     moveCard = (oldPosition, newPosition) => {
-        let { intro } = this.props;
+        const { intro } = this.props;
         let toMove = null;
 
-        if (intro.length > oldPosition){
-            toMove = intro[oldPosition];        
+        if (intro.length > oldPosition) {
+            toMove = intro[oldPosition];
             this.props.moveSentence(toMove, oldPosition, newPosition);
         }
     }
 
     render() {
-        let { 
-            keywords, 
-            introKeywords, 
-            description, 
-            intro
+        const {
+            keywords,
+            introKeywords,
+            description,
+            intro,
         } = this.props;
-        let keywordsUsed = this.getUsedKeywords();
+        const keywordsUsed = this.getUsedKeywords();
 
         return (
             <div className="intro-tab">
-                <IntroControl keywords={introKeywords} onClickCallBack={this.addToIntro} header="Introduction" />
+                <ParagraphControl keywords={introKeywords} onClickCallBack={this.addToIntro} header="Introduction" />
                 <KeywordControl keywords={keywordsUsed} onClickCallBack={this.addToIntro} header="Keywords" />
-                    {/*
-                { intro.map((introSentence) => {
-                        return (<Chip key={introSentence.id} onRequestDelete={() => { this.onChipDelete(introSentence) }} className="sentenceChips" >
-                                    {introSentence.title}
-                                </Chip>);
-                    }) }
-                */}
 
                 {intro.map((card, i) => (
                     <DraggableChips
@@ -100,7 +82,6 @@ class IntroTab extends Component<Props, State> {
                         data={card}
                     />
                 ))}
-                
             </div>
         );
     }

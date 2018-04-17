@@ -83,12 +83,9 @@ class KeywordsTab extends Component<Props, State> {
 
         return (
             <div className="keywords-tab">
-
                 <AddKeyworkdControl />
                 { dropdownDisplay }
                 <StringArrayEditor data={descriptions} saveEvent={this.onUpdate} />
-
-             
             </div>
         );
     }

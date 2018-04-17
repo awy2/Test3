@@ -1,7 +1,6 @@
 // @flow
 
-import { checkSentenceEnding } from 'util';
-import { sentence, Sentence } from 'data';
+import Sentence from 'data';
 import * as types from './types';
 import * as action from './actions';
 

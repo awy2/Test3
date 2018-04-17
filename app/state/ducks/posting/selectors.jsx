@@ -52,7 +52,7 @@ function getDisplayProps(state: GlobalState): PostingDisplayField {
         province: state.posting.province,
         zipCode: state.posting.zipCode,
         position: state.posting.position,
-    }
+    };
 }
 
 export {

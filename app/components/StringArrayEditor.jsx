@@ -1,10 +1,11 @@
 // @flow
 
-import React, { Component } from 'react';
+import * as React from 'react';
 import Divider from 'material-ui/Divider/Divider';
 import Paper from 'material-ui/Paper/Paper';
 import TextField from 'material-ui/TextField/TextField';
 import RaisedButton from 'material-ui/RaisedButton/RaisedButton';
+import RemoveCircle from 'material-ui/svg-icons/content/remove-circle';
 
 type Props = {
     data: Array<string>,
@@ -15,7 +16,7 @@ type State = {
     data: Array<string>,
 };
 
-export default class StringArrayEditor extends Component<Props, State> {
+export default class StringArrayEditor extends React.Component<Props, State> {
     state = {
         data: this.props.data || [],
     }
@@ -43,7 +44,15 @@ export default class StringArrayEditor extends Component<Props, State> {
         this.setState({ data: [...this.state.data, ''] });
     }
 
-    render() {
+    onRemoveDescription = (event: Event, index: number) => {
+        debugger
+        let { data } = this.state;
+        let updatedData = data.slice(); 
+        updatedData.splice(index);
+        this.setState({data: updatedData});
+    }
+
+    render() :any {
         return (
             <div>
              
@@ -59,6 +68,8 @@ export default class StringArrayEditor extends Component<Props, State> {
                                     value={description}
                                     onChange={(event: Event) => { this.onDescriptionChange(event, index); }}
                                 />
+
+                                <RemoveCircle onClick={(event: Event)  => this.onRemoveDescription(event, index)} />
                                 <Divider key={`stringArrayDivider_${index}`} />
                             </React.Fragment>
 

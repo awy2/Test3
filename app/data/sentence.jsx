@@ -1,7 +1,6 @@
 // @flow
 
 import uuidv4 from 'uuid/v4';
-import { checkSentenceEnding } from 'util';
 import { sentence } from 'data';
 
 // TODO: Map doesn't work well with flow
@@ -15,15 +14,14 @@ specialWordsIdentifier.set('lastName', '*lastName*');
 specialWordsIdentifier.set('city', '*city*');
 
 export {
-    specialWordsIdentifier
+    specialWordsIdentifier,
 };
 
 export class Sentence {
-
     value: string;
     title: string;
     id: string;
-    
+
     constructor(obj: sentence) {
         this.value = obj.value;
         this.title = obj.title;

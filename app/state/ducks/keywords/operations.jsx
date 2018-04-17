@@ -19,7 +19,7 @@ import type {
 
 PouchDB.plugin(PouchFind);
 
-const databaseName : string = 'http://localhost:5984/test'; // 'offline';
+const databaseName : string = 'http://localhost:5984/test';
 const PouchInstance = new PouchDB(databaseName);
 
 

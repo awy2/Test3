@@ -4,6 +4,12 @@ $standard-button-color: rgb(0, 188, 212);
 
 $text-opacity: 0.3;
 
+$cover-letter-header-color: white;
+$cover-letter-header-font-family: Arial;
+
+$cover-letter-header-name-font-size: 24px;
+$cover-letter-header-top-radius: 10px;
+
 .descirption-label{
     opacity: $text-opacity;
 }
@@ -99,23 +105,23 @@ $text-opacity: 0.3;
 
 .mainBody{
 
-  height: 80vh;
-  $main-tab-margin: 2%;
-  $cover-letter-border-width: 1px;
-  $main-tab-width: calc( (100% - #{ 4 * $main-tab-margin } - #{ 2 * $cover-letter-border-width } )/2 );
+    height: 80vh;
+    $main-tab-margin: 2%;
+    $cover-letter-border-width: 1px;
+    $main-tab-width: calc( (100% - #{ 4 * $main-tab-margin } - #{ 2 * $cover-letter-border-width } )/2 );
 
-  .input-controls{
-    width: $main-tab-width;
-    display: inline-block;
-    margin: $main-tab-margin;
+    .input-controls{
+        width: $main-tab-width;
+        display: inline-block;
+        margin: $main-tab-margin;
 
-    .input-tab{
-      height: 100%;
+        .input-tab{
+            height: 100%;
 
-      .job-posting-tab{
-          padding: 8px;
-      }
-    }
+            .job-posting-tab{
+                padding: 8px;
+            }
+        }
 
     /***************Keyword Tab******************************/
     .keywords-tab{
@@ -131,23 +137,75 @@ $text-opacity: 0.3;
             }
         }
     }
-    
-  }
+}
 
-  .output-controls{
+.output-controls{
     width: $main-tab-width;
     display: inline-block;
     margin: $main-tab-margin;
 
     vertical-align: top;
     height: 100%;
+    
+    
+    #cover-letter{
+        
+        /* TODO: The jsPDF libaray I was  doesn't work well with CSS */
+        height: calc( #{$main-tab-width} * 1.4142);
+        border-style: solid !important;
+        border: black;
+        border-width: $cover-letter-border-width;
 
-    #coverLetter{
-      height: calc( #{$main-tab-width} * 1.4142);
-      border-style: solid !important;
-      border: black;
-      border-width: $cover-letter-border-width;
-    }  
+        #cover-letter-header-container{
+            margin: 10px;
+            border-top-right-radius: $cover-letter-header-top-radius;
+            border-top-left-radius: $cover-letter-header-top-radius;
+            background-image:repeating-linear-gradient(45deg, #000000, #000 0.5px, #999 2px, #000 2px, #000 7px, #111112 1px);
+        }
+
+        #cover-letter-header-name-container{
+            height: $cover-letter-header-name-font-size - 2px;
+            border-bottom: 5px solid $cover-letter-header-color;
+
+            #cover-letter-header-name{
+                font-size: $cover-letter-header-name-font-size;
+                font-family: $cover-letter-header-font-family;
+                color: $cover-letter-header-color;
+                text-transform: uppercase;
+                text-align: center;
+                margin: 10px 10px 0px;
+            }
+        }
+
+        #cover-letter-header-contact-container{
+            .cover-letter-contact-list{
+                color: $cover-letter-header-color;
+                margin: 0px;
+
+                li{
+                    display:inline-block;
+                    font-size: 14px;
+                    font-family: $cover-letter-header-font-family;
+                    font-weight: bolder;
+                }
+
+                li:before {
+                    content: '\00a0\2022\00a0\00a0';
+                    color: $cover-letter-header-color;
+                    color: $cover-letter-header-color;
+                    font-size:11px;
+                    font-weight: bold;
+                }
+
+                li:first-child:before {
+                    content: '';
+                }
+            }
+        }
+       
+    } 
+
+
 
     .print-pdf-button{
         background-color: $standard-button-color !important;

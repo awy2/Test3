@@ -1,6 +1,6 @@
 // @flow
 
-import { sentence, Sentence } from 'data';
+import { Sentence } from 'data';
 
 const INTRO_ADD_SENTENCE = 'intro/INTRO_ADD_SENTENCE';
 const INTRO_REMOVE_SENTENCE = 'intro/INTRO_REMOVE_SENTENCE';

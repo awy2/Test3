@@ -1,10 +1,9 @@
 // @flow
 
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-
 import jsPDF from 'jspdf';
 import FlatButton from 'material-ui/FlatButton/FlatButton';
+import Paper from 'material-ui/Paper/Paper';
 
 import { ExampleButton } from 'components';
 import CoverLetter from './CoverLetter';
@@ -16,10 +15,10 @@ class OutputControl extends Component<Props> {
     onPrintPDF = () => {
         // eslint-disable-next-line new-cap
         const doc = new jsPDF();
-        const source = document.getElementById('coverLetter');
+        const source = document.getElementById('cover-letter');
         const specialElementHandlers = {
             // eslint-disable-next-line func-names
-            '#myId': function() { // element, renderer
+            '#cover-letter': function() { // element, renderer
                 return true;
             },
         };
@@ -36,7 +35,9 @@ class OutputControl extends Component<Props> {
     render() {
         return (
             <div className="output-controls">
-                <CoverLetter />
+                <Paper zDepth={4}>
+                    <CoverLetter />
+                </Paper>
                 <FlatButton label="Print PDF" onClick={this.onPrintPDF} className="print-pdf-button" />
                 <ExampleButton />
             </div>

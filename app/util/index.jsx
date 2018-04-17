@@ -11,12 +11,12 @@ export const arrayMove = (arr: Array<any>, oldIndex: number, newIndex: number) =
     const difference = newIndex - oldIndex;
     const value = copyArr.splice(oldIndex, 1)[0];
     const before = copyArr.splice(0, oldIndex + difference);
-    const after = copyArr.splice(0, copyArr.length );
-    
+    const after = copyArr.splice(0, copyArr.length);
+
     return [
         ...before,
         value,
-        ...after
+        ...after,
     ];
 };
 
@@ -51,13 +51,12 @@ export const getUsedKeywords = (keywords: Array<keyword>, description: string) :
 
 
 export const checkSentenceEnding = (newSentence: string): string => {
-    
     let updatedSentence: string = '';
 
-    if (typeof (newSentence) === 'string'){
+    if (typeof (newSentence) === 'string') {
         updatedSentence = newSentence.trim();
         updatedSentence = updatedSentence.endsWith('.') ? `${updatedSentence} ` : `${updatedSentence}. `;
     }
 
     return updatedSentence;
-}
+};

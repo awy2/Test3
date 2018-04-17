@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { keyword } from 'data';
@@ -18,7 +18,7 @@ type State = {
     highligthScroll: number;
 };
 
-class Description extends Component<Props, State> {
+class Description extends React.Component<Props, State> {
 
     constructor(props) {
         super(props);
@@ -72,7 +72,12 @@ class Description extends Component<Props, State> {
 
     stringToIndexedWords = (stringToParse: string) => {
         const result = [];
-        const { keywords } = this.props;
+        const { keywords = [] } = this.props;
+
+        if (keywords.length === 0) {
+            return result;
+        }
+
         const keywordsString :Array<string> = keywords.map((keywordObj) => { return keywordObj.keyword; });
     
         // TODO fix problem when words contain "|"
@@ -87,12 +92,14 @@ class Description extends Component<Props, State> {
             let match = execution[0];
             result.push([execution.index, execution.index + match.length, match]);
         }
+        
+
         return result;
     }
 
+    
     doHighlight = (input) => {
         const wordsVec = this.stringToIndexedWords(input);
-
         return wordsVec.map(([start, end, word]) => {
             return [start, end];
         });
@@ -135,7 +142,7 @@ class Description extends Component<Props, State> {
         this.setState({ highligthScroll: scrollTop });
     }
 
-    render() {
+    render() :any {
         const { description: descriptionText = '' } = this.props;
             //   <label>Description</label>
         /* eslint-disable no-return-assign */

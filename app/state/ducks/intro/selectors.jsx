@@ -1,6 +1,6 @@
 // @flow
 
-import { sentence, Sentence } from 'data';
+import { Sentence } from 'data';
 import type { IntroState } from './reducers';
 
 type GlobalState = {
