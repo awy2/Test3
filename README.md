@@ -1,3 +1,6 @@
+## Update
+Code saving and creating cover letter working, but was having issue creatig formated pdf. Taking a break from this to work on other stuff
+
 ## Intro
 
 ## TODO 
