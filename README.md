@@ -1,5 +1,5 @@
 ## Update
-Code saving and creating cover letter working, but was having issue creatig formated pdf. Taking a break from this to work on other stuff
+Code for saving data and creating cover letter in the browser is working, but I was having issue creatig formated pdf(was using jsPDF). Taking a break from this to work on other stuff
 
 ## Intro
 
